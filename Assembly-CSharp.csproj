@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\1. Assets\CollegeStudent\Demo\DemoCollegeStudentController.cs" />
+    <Compile Include="Assets\1. Assets\Wizard - 2D Character\Demo\SimplePlayerController.cs" />
+    <Compile Include="Assets\1. Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
+    <Compile Include="Assets\2. Scripts\PlayerCtrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
