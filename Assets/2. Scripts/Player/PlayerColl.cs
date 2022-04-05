@@ -9,6 +9,7 @@ public class PlayerColl : MonoBehaviour
     public DoorCtrl doorCtrl;
 
     // 충돌을 시작했을 때 호출
+    // Called When it starts to collide
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Depend on what kind of object that collided with player
@@ -24,24 +25,36 @@ public class PlayerColl : MonoBehaviour
                 playerCtrl.anim.SetBool("isJump", false);
                 break;
 
+        }
+    }
+
+    // Called When it starts to trigger
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Depend on what kind of object that triggered with player
+        switch (collision.gameObject.tag)
+        {
             // case of Door
             case "Door":
                 // can open door
                 doorCtrl.canOpen = true;
-
+                StartCoroutine(doorCtrl.Lighting());
                 break;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+
+    // Called When it ends to trigger
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        // Depend on what kind of object that exit with player
+        // Depend on what kind of object that exited with player
         switch (collision.gameObject.tag)
         {
             // case of Door
             case "Door":
                 // can't open door
                 doorCtrl.canOpen = false;
+                StartCoroutine(doorCtrl.Unlighting());
                 break;
         }
     }
