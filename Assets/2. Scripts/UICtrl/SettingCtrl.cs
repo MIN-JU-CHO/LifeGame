@@ -5,6 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class SettingCtrl : MonoBehaviour
 {
+    // Always called even if it is not active
+    private void Awake()
+    {
+        // Search and save every objects that has SettingCtrl script
+        SettingCtrl[] script = FindObjectsOfType<SettingCtrl>();
+
+        // If this scene has GameManager objects more than 1
+        if (script.Length > 1)
+        {
+            // Destroy older one
+            Destroy(script[1].gameObject);
+        }
+
+        // Don't destroy this object(GameManager) even if scene changes
+        DontDestroyOnLoad(gameObject);
+        //GetComponent<LevelCtrl>().UpdateLevel();
+        //GetComponent<MoneyCtrl>().UpdateMoney();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

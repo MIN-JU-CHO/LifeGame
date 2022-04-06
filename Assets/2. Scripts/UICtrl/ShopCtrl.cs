@@ -8,9 +8,11 @@ public class ShopCtrl : MonoBehaviour
 {
     private Items item;
 
+    MoneyCtrl moneyCtrl;
+
     private bool isCactusSoldOut;
     public Image cactusImg;
-    public Text costCactusText, moneyText, soldOutCactusText;
+    public Text costCactusText, soldOutCactusText;
 
 
     private bool isArmchairSoldOut;
@@ -33,17 +35,16 @@ public class ShopCtrl : MonoBehaviour
 
     public void BuyItem()
     {
-        string moneyStr = Regex.Replace(moneyText.text, @"\D", "");
         switch (item)
         {
             case Items.Cactus:
                 string costStr = Regex.Replace(costCactusText.text, @"\D", "");
 
                 // 현재 보유한 돈이 가격 이상일 때, 품절이 아닐 때
-                if (int.Parse(moneyStr) >= int.Parse(costStr) && !isCactusSoldOut)
+                if (moneyCtrl.GetMoney() >= int.Parse(costStr) && !isCactusSoldOut)
                 {
                     Instantiate(Resources.Load("Flower3"));
-                    moneyText.text = (int.Parse(moneyStr) - int.Parse(costStr)).ToString() + "원";
+                    moneyCtrl.Purchase(int.Parse(costStr));
                     isCactusSoldOut = true;
                     soldOutCactusText.text = "SOLD OUT";
                     cactusImg.color = Color.gray;
@@ -53,15 +54,20 @@ public class ShopCtrl : MonoBehaviour
                 string costStr2 = Regex.Replace(costArmchairText.text, @"\D", "");
 
                 // 현재 보유한 돈이 가격 이상일 때, 품절이 아닐 때
-                if (int.Parse(moneyStr) >= int.Parse(costStr2) && !isArmchairSoldOut)
+                if (moneyCtrl.GetMoney() >= int.Parse(costStr2) && !isArmchairSoldOut)
                 {
                     Instantiate(Resources.Load("Armchair"));
-                    moneyText.text = (int.Parse(moneyStr) - int.Parse(costStr2)).ToString() + "원";
+                    moneyCtrl.Purchase(int.Parse(costStr2));
                     isArmchairSoldOut = true;
                     soldOutArmchairText.text = "SOLD OUT";
                     ArmchairImg.color = Color.gray;
                 }
                 break;
         }
+    }
+
+    private void Start()
+    {
+        moneyCtrl = GetComponent<MoneyCtrl>();
     }
 }
