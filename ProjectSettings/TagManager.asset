@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bottom
   - Door
+  - UI
+  - MonDoor
+  - Enemy
   layers:
   - Default
   - TransparentFX

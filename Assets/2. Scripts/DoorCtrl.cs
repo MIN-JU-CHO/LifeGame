@@ -10,6 +10,7 @@ public class DoorCtrl : MonoBehaviour
     
     public SpriteRenderer lightSquare;
 
+    Scene scene;
     public IEnumerator Lighting()
     {
         yield return new WaitForSeconds(0.000001f);
@@ -52,9 +53,25 @@ public class DoorCtrl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canOpen)
+        
+    }
+    private void OnMouseDown()
+    {
+        scene = SceneManager.GetActiveScene();
+        if (scene.name == "Home")
         {
-            SceneManager.LoadScene("Town");
+            if (Input.GetMouseButtonDown(0) && canOpen)
+            {
+                SceneManager.LoadScene("Town");
+            }
+        }
+
+        else if (scene.name == "Monster")
+        {
+            if (Input.GetMouseButtonDown(0) && canOpen)
+            {
+                SceneManager.LoadScene("Home");
+            }
         }
     }
 }

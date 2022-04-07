@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0. Scenes/Town.unity
     guid: 7726c5a25afde314ca65eb4e4a0e09a9
+  - enabled: 1
+    path: Assets/0. Scenes/Monster.unity
+    guid: 2330ded23fa2678439782c8653d0d666
   m_configObjects: {}

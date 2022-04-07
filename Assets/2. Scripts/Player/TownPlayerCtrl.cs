@@ -10,7 +10,7 @@ public class TownPlayerCtrl : MonoBehaviour
 
     // 플레이어 Animator
     // Animator of this player
-    Animator anim;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()

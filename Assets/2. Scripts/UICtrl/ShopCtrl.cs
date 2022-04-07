@@ -6,18 +6,19 @@ using UnityEngine.UI;
 
 public class ShopCtrl : MonoBehaviour
 {
+    public bool isShop = true;
     private Items item;
 
     MoneyCtrl moneyCtrl;
 
     private bool isCactusSoldOut;
-    public Image cactusImg;
-    public Text costCactusText, soldOutCactusText;
+    Image cactusImg;
+    Text costCactusText, soldOutCactusText;
 
 
     private bool isArmchairSoldOut;
-    public Image ArmchairImg;
-    public Text costArmchairText, soldOutArmchairText;
+    Image ArmchairImg;
+    Text costArmchairText, soldOutArmchairText;
 
     public enum Items
     {
@@ -35,6 +36,10 @@ public class ShopCtrl : MonoBehaviour
 
     public void BuyItem()
     {
+        if (!isShop)
+        {
+            return;
+        }
         switch (item)
         {
             case Items.Cactus:
@@ -68,6 +73,12 @@ public class ShopCtrl : MonoBehaviour
 
     private void Start()
     {
+        cactusImg = GameObject.Find("DefaultUI").transform.Find("ShopView").transform.Find("Cactus").GetComponent<Image>();
+        costCactusText = GameObject.Find("DefaultUI").transform.Find("ShopView").transform.Find("Cactus").transform.Find("ItemText").GetComponent<Text>();
+        soldOutCactusText = GameObject.Find("DefaultUI").transform.Find("ShopView").transform.Find("Cactus").transform.Find("SoldOut").GetComponent<Text>();
+        ArmchairImg = GameObject.Find("DefaultUI").transform.Find("ShopView").transform.Find("Armchair").GetComponent<Image>();
+        costArmchairText = GameObject.Find("DefaultUI").transform.Find("ShopView").transform.Find("Armchair").transform.Find("ItemText").GetComponent<Text>();
+        soldOutArmchairText = GameObject.Find("DefaultUI").transform.Find("ShopView").transform.Find("Armchair").transform.Find("SoldOut").GetComponent<Text>();
         moneyCtrl = GetComponent<MoneyCtrl>();
     }
 }

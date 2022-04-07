@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LevelCtrl : MonoBehaviour
 {
-    static private int level = 1;
+    public static int level = 1;
 
     public Text levelText;
 

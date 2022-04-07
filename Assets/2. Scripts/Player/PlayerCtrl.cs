@@ -111,7 +111,7 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetButtonDown("Jump") && jumpCount < 2)
         {
             // Add Force to top
-            rig.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+            rig.AddForce(Vector2.up * 7, ForceMode2D.Impulse);
 
             // counting num of jump
             jumpCount++;
