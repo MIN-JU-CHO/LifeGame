@@ -56,30 +56,31 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\2. Scripts\BuildingClick.cs" />
     <Compile Include="Assets\1. Assets\Free 2D Cartoon Parallax Background\Demo\Script\ParallaxBackground_0.cs" />
-    <Compile Include="Assets\2. Scripts\LevelCtrl.cs" />
+    <Compile Include="Assets\2. Scripts\GameManage\LevelCtrl.cs" />
     <Compile Include="Assets\2. Scripts\UICtrl\SettingCtrl.cs" />
     <Compile Include="Assets\1. Assets\CollegeStudent\Demo\DemoCollegeStudentController.cs" />
     <Compile Include="Assets\2. Scripts\Player\TownPlayerColl.cs" />
     <Compile Include="Assets\2. Scripts\Player\TownPlayerCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\DoorCtrl.cs" />
+    <Compile Include="Assets\2. Scripts\SceneManage\DoorCtrl.cs" />
     <Compile Include="Assets\2. Scripts\UICtrl\ShopCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\BulletCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\GotoMonster.cs" />
+    <Compile Include="Assets\2. Scripts\GameManage\BulletCtrl.cs" />
+    <Compile Include="Assets\2. Scripts\SceneManage\GotoMonster.cs" />
+    <Compile Include="Assets\2. Scripts\MonsterDetect.cs" />
     <Compile Include="Assets\1. Assets\Wizard - 2D Character\Demo\SimplePlayerController.cs" />
     <Compile Include="Assets\2. Scripts\UICtrl\LevelUpgradeCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\GotoHome.cs" />
+    <Compile Include="Assets\2. Scripts\SceneManage\GotoHome.cs" />
+    <Compile Include="Assets\2. Scripts\UICtrl\BuildingCtrl.cs" />
     <Compile Include="Assets\2. Scripts\MonsterCtrl.cs" />
     <Compile Include="Assets\1. Assets\Free 2D Cartoon Parallax Background\Demo\Script\BackgroundControl_0.cs" />
+    <Compile Include="Assets\2. Scripts\GameManage\BuildingTransaction.cs" />
     <Compile Include="Assets\2. Scripts\Player\PlayerColl.cs" />
     <Compile Include="Assets\2. Scripts\Player\PlayerCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\MoneyCtrl.cs" />
+    <Compile Include="Assets\2. Scripts\GameManage\MoneyCtrl.cs" />
     <Compile Include="Assets\1. Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
     <Compile Include="Assets\2. Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\2. Scripts\CameraCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\MonsterDetect.cs" />
-    <Compile Include="Assets\2. Scripts\BuildingClick.cs" />
-    <Compile Include="Assets\2. Scripts\UICtrl\BuildingCtrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1. Assets\Warrior free set\License.txt" />
