@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BuildingCtrl : MonoBehaviour
 {
-    int type;
+    int type, floor;
     bool building1;
     public bool canEarn00, canEarn01, canEarn02;
 
@@ -32,10 +32,26 @@ public class BuildingCtrl : MonoBehaviour
         
     }
 
+    // When Each buidlings get clicked, they call this func
+    // with their own Number(i) Of Building
     public void OpenUI(int i)
     {
         GameObject.Find("DefaultUI").transform.Find("BuildingView").gameObject.SetActive(true);
         type = i;
+    }
+
+    // Each functions below can be called when selected each floors' buttons
+    public void SelectFloor1()
+    {
+        floor = 1;
+    }
+    public void SelectFloor2()
+    {
+        floor = 2;
+    }
+    public void SelectFloor3()
+    {
+        floor = 3;
     }
 
     public void BuyBuilding()
@@ -49,11 +65,11 @@ public class BuildingCtrl : MonoBehaviour
                 {
                     moneyCtrl.Purchase(int.Parse(costText));
                     buildContract.SaveBuying(0);
-                    // 1Ãþ ÆíÀÇÁ¡ ÃÊ ¼¼±â
+                    // 1Ãþ ÆíÀÇÁ¡ ÃÊ ¼¼±â (start to countdown 1st floor)
                     StartCoroutine(buildContract.TimeRunningOfEarn(0, 0));
-                    // 2Ãþ µ¶¼­½Ç ÃÊ ¼¼±â
+                    // 2Ãþ µ¶¼­½Ç ÃÊ ¼¼±â (start to countdown 2nd floor)
                     StartCoroutine(buildContract.TimeRunningOfEarn(0, 1));
-                    // 3Ãþ ¼­Á¡ ÃÊ ¼¼±â
+                    // 3Ãþ ¼­Á¡ ÃÊ ¼¼±â (start to countdown 3rd floor)
                     StartCoroutine(buildContract.TimeRunningOfEarn(0, 2));
                     building1 = true;
                 }
@@ -68,8 +84,8 @@ public class BuildingCtrl : MonoBehaviour
             // Á¦ÀÏ ºôµù
             case 0:
                 string costText = Regex.Replace(EarnCost1.text, @"\D", "");
-                // Á¦ÀÏ ºôµù »ò°í, 1Ãþ 60ºÐ Áö³µÀ» ¶§
-                if (building1 && canEarn00)
+                // Á¦ÀÏ ºôµù »ò°í, 1Ãþ 60ºÐ Áö³µ°í, ´©¸¥ ¹öÆ°ÀÌ 1ÃþÀÏ ¶§
+                if (building1 && canEarn00 && floor == 1)
                 {
                     // µ· ¹ú±â
                     moneyCtrl.Earn(int.Parse(costText));
@@ -77,8 +93,8 @@ public class BuildingCtrl : MonoBehaviour
                     StartCoroutine(buildContract.TimeRunningOfEarn(0, 0));
                     canEarn00 = false;
                 }
-                // Á¦ÀÏ ºôµù »ò°í, 2Ãþ 40ºÐ Áö³µÀ» ¶§
-                else if (building1 && canEarn01)
+                // Á¦ÀÏ ºôµù »ò°í, 2Ãþ 40ºÐ Áö³µ°í, ´©¸¥ ¹öÆ°ÀÌ 2ÃþÀÏ ¶§
+                else if (building1 && canEarn01 && floor == 2)
                 {
                     costText = Regex.Replace(EarnCost2.text, @"\D", "");
                     // µ· ¹ú±â
@@ -87,8 +103,8 @@ public class BuildingCtrl : MonoBehaviour
                     StartCoroutine(buildContract.TimeRunningOfEarn(0, 1));
                     canEarn01 = false;
                 }
-                // Á¦ÀÏ ºôµù »ò°í, 2Ãþ 50ºÐ Áö³µÀ» ¶§
-                else if (building1 && canEarn02)
+                // Á¦ÀÏ ºôµù »ò°í, 2Ãþ 50ºÐ Áö³µ°í, ´©¸¥ ¹öÆ°ÀÌ 2ÃþÀÏ ¶§
+                else if (building1 && canEarn02 && floor == 3)
                 {
                     costText = Regex.Replace(EarnCost3.text, @"\D", "");
                     // µ· ¹ú±â

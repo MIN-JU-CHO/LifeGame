@@ -17,10 +17,9 @@ public class BuildingClick : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        print("Click");
-        if (Input.GetMouseButtonDown(0))
+        GameObject.Find("GameManager").GetComponent<BuildingCtrl>().OpenUI(0);
+        /*if (Input.GetMouseButtonDown(0))
         {
-            GameObject.Find("GameManager").GetComponent<BuildingCtrl>().OpenUI(0);
-        }
+        }*/
     }
 }

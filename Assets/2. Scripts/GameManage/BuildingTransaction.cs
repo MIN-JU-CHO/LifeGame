@@ -85,7 +85,7 @@ public class BuildingTransaction : MonoBehaviour
                             }
                         }
                         break;
-                    // 3Ãþ ---
+                    // 3Ãþ ¼­Á¡
                     case 2:
                         timer02 = 50;
                         while (timer02 >= 0)

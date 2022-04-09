@@ -23,7 +23,7 @@ public class GotoMonster : MonoBehaviour
             }
             else
             {
-                color.a += .7f * Time.deltaTime;
+                color.a += 1f * Time.deltaTime;
             }
             lightSquare.color = color;
             yield return null;
@@ -43,7 +43,7 @@ public class GotoMonster : MonoBehaviour
             }
             else
             {
-                color.a -= .7f * Time.deltaTime;
+                color.a -= 1f * Time.deltaTime;
             }
             lightSquare.color = color;
             yield return null;
@@ -51,7 +51,7 @@ public class GotoMonster : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0) && canOpen)
+        if (canOpen)
         {
             SceneManager.LoadScene("Monster");
         }
