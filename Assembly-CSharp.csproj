@@ -81,6 +81,7 @@
     <Compile Include="Assets\1. Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
     <Compile Include="Assets\2. Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\2. Scripts\CameraCtrl.cs" />
+    <Compile Include="Assets\2. Scripts\GameManage\MonsterManage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1. Assets\Warrior free set\License.txt" />

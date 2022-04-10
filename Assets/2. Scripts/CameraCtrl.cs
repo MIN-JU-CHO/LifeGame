@@ -28,7 +28,7 @@ public class CameraCtrl : MonoBehaviour
     void LateUpdate()   // Called after Update()
     {
         // Saving player's position (Except z from itself)
-        Vector3 target = new Vector3(player.position.x + 5f, player.position.y, transform.position.z);
+        Vector3 target = new Vector3(player.position.x, player.position.y, transform.position.z);
 
         // Following player slowly
         transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * cameraSpeed);

@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterCtrl : MonoBehaviour
 {
+    [HideInInspector]
+    public int numOfThisMonster;
+
     GameObject gameManager;
+    GameObject monsterManager;
     public float health = 100;
+    public Image healthBar;
 
     
     public bool isFound;
@@ -100,11 +106,14 @@ public class MonsterCtrl : MonoBehaviour
         if (health > 0)
         {
             health -= scale;
+            anim.SetBool("walk", false);
             anim.SetTrigger("damage");
+            healthBar.fillAmount = health / 100;
         }
-        else
+        if (health <= 0)
         {
             gameManager.GetComponent<MoneyCtrl>().Earn(1000);
+            monsterManager.GetComponent<MonsterManage>().DeleteMonster(numOfThisMonster);
             Destroy(gameObject);
         }
     }
@@ -115,6 +124,7 @@ public class MonsterCtrl : MonoBehaviour
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").gameObject;
+        monsterManager = GameObject.Find("MonsterManager").gameObject;
     }
 
     // Update is called once per frame
