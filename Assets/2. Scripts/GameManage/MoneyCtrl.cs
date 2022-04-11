@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MoneyCtrl : MonoBehaviour
 {
-    static public int money = 5000000;
+    static public int money = 15000000;
 
     public Text moneyText;
 

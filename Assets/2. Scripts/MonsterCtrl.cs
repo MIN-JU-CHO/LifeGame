@@ -8,87 +8,119 @@ public class MonsterCtrl : MonoBehaviour
     [HideInInspector]
     public int numOfThisMonster;
 
-    GameObject gameManager;
-    GameObject monsterManager;
+    MoneyCtrl moneyCtrl;
+    MonsterManage monsterManager;
     public float health = 100;
     public Image healthBar;
 
-    
+    [HideInInspector]
+    public Transform player;
     public bool isFound;
-    Animator anim;
+    public bool isDamaged;
+    public Animator anim;
     Rigidbody2D rig;
 
+
     
-    public IEnumerator ChasePlayer(Transform player)
+    public void ChasePlayer(Transform player)
     {
-        while (isFound)
+        ////
+        // 플레이어를 못찾았거나, 공격받았을 때
+        if (!isFound || player == null || isDamaged)
         {
-            Vector3 dir = player.transform.position - transform.position;
-            float dire = 0;
-            if(dir.x > 0)
-            {
-                dire = 1;
-            }
-            else if (dir.x < 0)
-            {
-                dire = -1;
-            }
-            else
-            {
-                dire = 0;
-            }
-            // 움직이기
-            // Move by rigidbody
-            transform.position = transform.position + new Vector3(dire * Time.deltaTime, 0, 0);
-            //rig.AddForce((dir.x - transform.position.x) * Time.deltaTime * 1 * Vector2.right, ForceMode2D.Impulse);
+            // 걷기 중지
+            // Stop running animation
+            anim.SetBool("walk", false);
+            anim.SetTrigger("damage");
+            return;
+        }
 
-            // 미끄러지는 현상 방지
-            // If buttons are up, make sure it stops
-            if (!isFound)
-            {
-                rig.velocity = new Vector2(0, rig.velocity.y);
-            }
+        Vector3 dir = player.transform.position - transform.position;
+        float dire = 0;
+        if (dir.x > 0)
+        {
+            dire = 1;
+        }
+        else if (dir.x < 0)
+        {
+            dire = -1;
+        }
+        else
+        {
+            dire = 0;
+        }
+        // 움직이기
+        // Move by rigidbody
+        transform.position = transform.position + new Vector3(dire * Time.deltaTime, 0, 0);
+        //rig.AddForce((dir.x - transform.position.x) * Time.deltaTime * 1 * Vector2.right, ForceMode2D.Impulse);
 
-            // 멈췄을 때
-            if (dire == 0)
+        // 미끄러지는 현상 방지
+        // If buttons are up, make sure it stops
+        if (!isFound)
+        {
+            rig.velocity = new Vector2(0, rig.velocity.y);
+        }
+
+        // 멈췄을 때
+        if (dire == 0)
+        {
+            // 걷기 중지
+            // Stop running animation
+            anim.SetBool("walk", false);
+        }
+        // 움직일 때
+        else
+        {
+            // 걷기 중지
+            // Stop running animation
+            anim.SetBool("walk", false);
+
+            // 맞고 있을 때
+            if (isDamaged)
             {
-                // 애니메이션 바꾸기
+                // 걷기 중지
                 // Stop running animation
                 anim.SetBool("walk", false);
+                anim.SetTrigger("damage");
+                return;
             }
-            // 움직일 때
+            // 맞고 있지 않을 때
             else
             {
-                // 애니메이션 바꾸기
+                // 걷기
                 // Start running animation
                 anim.SetBool("walk", true);
-
-                // 왼쪽
-                if (dire > 0)
-                {
-                    // 캐릭터 방향 바꾸기
-                    // seeing left
-                    transform.localScale = new Vector3(-0.5f, 0.5f, 1);
-                }
-
-                // 오른쪽
-                else if (dire < 0)
-                {
-                    // 캐릭터 방향 바꾸기
-                    // seeing right
-                    transform.localScale = new Vector3(0.5f, 0.5f, 1);
-                }
             }
-            if (!isFound)
+
+            // 맞고 있을 때
+            if (isDamaged)
             {
-                break;
+                // 걷기 중지
+                // Stop running animation
+                anim.SetBool("walk", false);
+                anim.SetTrigger("damage");
             }
-            yield return null;
+
+            // 왼쪽
+            if (dire > 0)
+            {
+                // 캐릭터 방향 바꾸기
+                // seeing left
+                transform.localScale = new Vector3(-0.5f, 0.5f, 1);
+            }
+
+            // 오른쪽
+            else if (dire < 0)
+            {
+                // 캐릭터 방향 바꾸기
+                // seeing right
+                transform.localScale = new Vector3(0.5f, 0.5f, 1);
+            }
         }
-        yield return null;
+        ////
     }
 
-    public IEnumerator StopChase()
+    public void StopChase()
     {
         // 미끄러지는 현상 방지
         // make sure it stops
@@ -97,12 +129,11 @@ public class MonsterCtrl : MonoBehaviour
         // 애니메이션 바꾸기
         // Stop running animation
         anim.SetBool("walk", false);
-
-        yield return null;
     }
 
     public void Damage(float scale)
     {
+        isDamaged = true;
         if (health > 0)
         {
             health -= scale;
@@ -112,10 +143,18 @@ public class MonsterCtrl : MonoBehaviour
         }
         if (health <= 0)
         {
-            gameManager.GetComponent<MoneyCtrl>().Earn(1000);
-            monsterManager.GetComponent<MonsterManage>().DeleteMonster(numOfThisMonster);
+            anim.SetBool("walk", false);
+            anim.SetTrigger("damage");
+            moneyCtrl.Earn(1000);
+            monsterManager.DeleteMonster(numOfThisMonster);
             Destroy(gameObject);
         }
+        Invoke("ChangeStatus", 0.4f);
+    }
+
+    void ChangeStatus()
+    {
+        isDamaged = false;
     }
 
     // Start is called before the first frame update
@@ -123,13 +162,20 @@ public class MonsterCtrl : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
-        gameManager = GameObject.Find("GameManager").gameObject;
-        monsterManager = GameObject.Find("MonsterManager").gameObject;
+        moneyCtrl = GameObject.Find("GameManager").gameObject.GetComponent<MoneyCtrl>();
+        monsterManager = GameObject.Find("MonsterManager").gameObject.GetComponent<MonsterManage>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isFound || isDamaged)
+        {
+            StopChase();
+        }
+        else if(!isDamaged)
+        {
+            ChasePlayer(player);
+        }
     }
 }

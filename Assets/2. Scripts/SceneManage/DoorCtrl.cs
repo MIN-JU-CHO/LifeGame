@@ -69,6 +69,7 @@ public class DoorCtrl : MonoBehaviour
         {
             if (canOpen)
             {
+                SceneManager.LoadScene("Town");
                 // When trying to exit home, hide furnitures bought
                 if (shopCtrl.cactus != null)
                 {
@@ -106,7 +107,14 @@ public class DoorCtrl : MonoBehaviour
                 {
                     (shopCtrl.Picture2 as GameObject).SetActive(false);
                 }
-                SceneManager.LoadScene("Town");
+                if (shopCtrl.Sofa != null)
+                {
+                    (shopCtrl.Sofa as GameObject).SetActive(false);
+                }
+                if (shopCtrl.Table != null)
+                {
+                    (shopCtrl.Table as GameObject).SetActive(false);
+                }
             }
         }
 
@@ -119,6 +127,8 @@ public class DoorCtrl : MonoBehaviour
                 {
                     GameObject.Find("Wizard").GetComponent<PlayerShooting>().canShoot = false;
                 }
+
+                SceneManager.LoadScene("Home");
 
                 //When trying to go home, show furnitures bought
                 if (shopCtrl.cactus != null)
@@ -157,7 +167,14 @@ public class DoorCtrl : MonoBehaviour
                 {
                     (shopCtrl.Picture2 as GameObject).SetActive(true);
                 }
-                SceneManager.LoadScene("Home");
+                if (shopCtrl.Sofa != null)
+                {
+                    (shopCtrl.Sofa as GameObject).SetActive(true);
+                }
+                if (shopCtrl.Table != null)
+                {
+                    (shopCtrl.Table as GameObject).SetActive(true);
+                }
             }
         }
     }

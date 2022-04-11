@@ -11,7 +11,8 @@ public class MonsterDetect : MonoBehaviour
         {
             case "Player":
                 monsterCtrl.isFound = true;
-                StartCoroutine(monsterCtrl.ChasePlayer(collision.transform));
+                monsterCtrl.player = collision.transform;
+                //monsterCtrl.ChasePlayer(collision.transform);
                 break;
         }
     }
@@ -21,7 +22,7 @@ public class MonsterDetect : MonoBehaviour
         {
             case "Player":
                 monsterCtrl.isFound = false;
-                StartCoroutine(monsterCtrl.StopChase());
+                //monsterCtrl.StopChase();
                 break;
         }
     }

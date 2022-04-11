@@ -59,6 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab75b422e7865945a88c97190a7c0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTextOfList: {fileID: 0}
+  costText: {fileID: 0}
 --- !u!114 &7295959131502415082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +73,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec44531737621f1499f07796be869f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isShop: 1
+  cactus: {fileID: 0}
+  cactusImg: {fileID: 0}
+  costCactusText: {fileID: 0}
+  soldOutCactusText: {fileID: 0}
+  armchair: {fileID: 0}
+  ArmchairImg: {fileID: 0}
+  costArmchairText: {fileID: 0}
+  soldOutArmchairText: {fileID: 0}
+  book: {fileID: 0}
+  BookImg: {fileID: 0}
+  costBookText: {fileID: 0}
+  soldOutBookText: {fileID: 0}
+  Cup: {fileID: 0}
+  CupImg: {fileID: 0}
+  costCupText: {fileID: 0}
+  soldOutCupText: {fileID: 0}
+  Grass: {fileID: 0}
+  GrassImg: {fileID: 0}
+  costGrassText: {fileID: 0}
+  soldOutGrassText: {fileID: 0}
+  Tree: {fileID: 0}
+  TreeImg: {fileID: 0}
+  costTreeText: {fileID: 0}
+  soldOutTreeText: {fileID: 0}
+  Furniture: {fileID: 0}
+  FurnitureImg: {fileID: 0}
+  costFurnitureText: {fileID: 0}
+  soldOutFurnitureText: {fileID: 0}
+  Picture1: {fileID: 0}
+  Picture1Img: {fileID: 0}
+  costPicture1Text: {fileID: 0}
+  soldOutPicture1Text: {fileID: 0}
+  Picture2: {fileID: 0}
+  Picture2Img: {fileID: 0}
+  costPicture2Text: {fileID: 0}
+  soldOutPicture2Text: {fileID: 0}
+  Sofa: {fileID: 0}
+  SofaImg: {fileID: 0}
+  costSofaText: {fileID: 0}
+  soldOutSofaText: {fileID: 0}
+  Table: {fileID: 0}
+  TableImg: {fileID: 0}
+  costTableText: {fileID: 0}
+  soldOutTableText: {fileID: 0}
 --- !u!114 &7295959130901875234
 MonoBehaviour:
   m_ObjectHideFlags: 0

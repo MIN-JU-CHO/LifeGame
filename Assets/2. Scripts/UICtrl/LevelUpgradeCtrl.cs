@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LevelUpgradeCtrl : MonoBehaviour
 {
     private Abilities ably;
-    Text levelTextOfList, costText;
+    public Text levelTextOfList, costText;
 
     LevelCtrl levelCtrl;
     MoneyCtrl moneyCtrl;
@@ -47,7 +47,7 @@ public class LevelUpgradeCtrl : MonoBehaviour
         levelCtrl = GetComponent<LevelCtrl>();
 
         // Find level text from upgrading
-        levelTextOfList = GameObject.Find("DefaultUI").transform.Find("LevelView").transform.Find("Item").transform.Find("LevelText").GetComponent<Text>();
-        costText = GameObject.Find("DefaultUI").transform.Find("LevelView").transform.Find("Item").transform.Find("CostText").GetComponent<Text>();
+        //levelTextOfList = GameObject.Find("DefaultUI").transform.Find("LevelView").transform.Find("Item").transform.Find("LevelText").GetComponent<Text>();
+        //costText = GameObject.Find("DefaultUI").transform.Find("LevelView").transform.Find("Item").transform.Find("CostText").GetComponent<Text>();
     }
 }

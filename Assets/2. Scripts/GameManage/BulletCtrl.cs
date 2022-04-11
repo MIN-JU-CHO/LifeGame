@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
+    LevelCtrl levelCtrl;
+
+    private void Start()
+    {
+        levelCtrl = GameObject.Find("GameManager").GetComponent<LevelCtrl>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag=="Enemy"|| collision.gameObject.tag == "Bottom")
@@ -13,7 +20,7 @@ public class BulletCtrl : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy")
         {
-            collision.GetComponent<MonsterCtrl>().Damage(10);
+            collision.GetComponent<MonsterCtrl>().Damage(levelCtrl.GetLevel() * 5);
         }
     }
 }

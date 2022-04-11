@@ -9,6 +9,7 @@ TagManager:
   - UI
   - MonDoor
   - Enemy
+  - BUI
   layers:
   - Default
   - TransparentFX
