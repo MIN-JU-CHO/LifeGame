@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\2. Scripts\UICtrl\TownDataCtrl.cs" />
     <Compile Include="Assets\2. Scripts\BuildingClick.cs" />
     <Compile Include="Assets\2. Scripts\GameManage\MonsterManage.cs" />
     <Compile Include="Assets\1. Assets\Free 2D Cartoon Parallax Background\Demo\Script\ParallaxBackground_0.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Assets\1. Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
     <Compile Include="Assets\2. Scripts\Player\PlayerShooting.cs" />
     <Compile Include="Assets\2. Scripts\CameraCtrl.cs" />
-    <Compile Include="Assets\2. Scripts\UICtrl\TownDataCtrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1. Assets\Warrior free set\License.txt" />

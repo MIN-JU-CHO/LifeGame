@@ -57,7 +57,11 @@ if (collision.gameObject.tag=="Enemy"|| collision.gameObject.tag == "Bottom")
             Destroy(gameObject);
         }
 '''
- -> 혹시 모를 오류 방지 차원으로 콜라이더 Hierarchy 수정 (+DetectRange) : BeforeCorrectCollidersOfMonster.PNG => AfterCorrectCollidersOfMonster.PNG
+ -> 혹시 모를 오류 방지 차원으로 콜라이더 Hierarchy 수정 (+DetectRange) :
+ - Before
+![Before0](https://github.com/MIN-JU-CHO/LifeGame/tree/main/ImagesForDescribe/BeforeCorrectCollidersOfMonster.PNG)
+ - After
+![After0](https://github.com/MIN-JU-CHO/LifeGame/tree/main/ImagesForDescribe/AfterCorrectCollidersOfMonster.PNG)
 
 * *04/09*
 1. BuildingView UI 에서 Floor3 눌렀을 때 다른 Floor의 타이머가 불러져 재시작됨 (돈은 그대로)
@@ -101,3 +105,9 @@ void Update() {
 }
 '''
 Update 함수에서 Time.deltaTime이 작동 안될 때는 위 코드를 이용해 디버깅한다.
+6. Town Building ScrollView 구조 오류
+ -> 한 스크롤 뷰 안에 content 안에 스크롤할 내용물만 있어야 한다.
+ - Before
+![Before](https://github.com/MIN-JU-CHO/LifeGame/tree/main/ImagesForDescribe/20220412ScrollViewBefore.PNG)
+ - After
+![After](https://github.com/MIN-JU-CHO/LifeGame/tree/main/ImagesForDescribe/20220412ScrollViewAfter.PNG)
