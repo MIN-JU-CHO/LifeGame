@@ -1,4 +1,8 @@
 # LifeGame
+
+최종 발표 영상
+
+https://youtu.be/nnoyvhAN0bI
 ***
 ##*<Tasks to do>
 1. 돈 관리 (0407완료)
